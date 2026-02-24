@@ -1,0 +1,13 @@
+# Build outputs
+**/target/
+
+# Java artifacts
+*.class
+*.jar
+*.war
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
