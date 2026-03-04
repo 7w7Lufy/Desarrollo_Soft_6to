@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca FrontEnd</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 400px; margin: auto; }
+        input, button { display: block; width: 100%; margin-bottom: 10px; padding: 8px; }
+        .btn-prestar { background-color: #3498db; color: white; border: none; cursor: pointer; }
+        .btn-devolver { background-color: #e67e22; color: white; border: none; cursor: pointer; }
+        #resultado { margin-top: 15px; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2>Gestión de Biblioteca</h2>
+    <input type="text" id="usuario" placeholder="Nombre del Usuario (Ej. Ana o Juan)">
+    <input type="number" id="id_libro" placeholder="ID del Libro (Ej. 1 o 2)" min="1" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+    
+    <button class="btn-prestar" onclick="gestionarLibro('prestar')">Solicitar Préstamo</button>
+    <button class="btn-devolver" onclick="gestionarLibro('devolver')">Devolver Libro</button>
+    
+    <div id="resultado"></div>
+
+    <script>
+        async function gestionarLibro(accion) {
+            const usuario = document.getElementById('usuario').value;
+            const id_libro = parseInt(document.getElementById('id_libro').value);
+
+
+            if (!usuario || isNaN(id_libro)) {
+                document.getElementById('resultado').innerText = "Por favor, llena ambos campos correctamente.";
+                document.getElementById('resultado').style.color = "red";
+                return;
+            }
+
+
+            const url = `http://127.0.0.1:5000/${accion}`;
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ usuario, id_libro })
+                });
+                
+                const data = await response.json();
+                document.getElementById('resultado').innerText = data.mensaje || data.error;
+                document.getElementById('resultado').style.color = response.ok ? 'green' : 'red';
+            } catch (error) {
+                document.getElementById('resultado').innerText = "Error conectando al servidor. ¿Está encendido el app.py?";
+                document.getElementById('resultado').style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

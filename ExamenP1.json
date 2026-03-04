@@ -1,0 +1,133 @@
+{
+    "t": [
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "fase": "Planificación",
+            "inicio": "14:20",
+            "fin": "14:45",
+            "muerto": 5.0,
+            "efectivo": 20.0,
+            "com": "Lectura de rúbrica, elección del tema de la biblioteca y creación de carpetas."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "fase": "Diseño",
+            "inicio": "14:45",
+            "fin": "15:05",
+            "muerto": 0.0,
+            "efectivo": 20.0,
+            "com": "Definición de objetos (Usuario, Libro) y creación del diagrama de secuencia."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "fase": "Codificación",
+            "inicio": "15:05",
+            "fin": "15:50",
+            "muerto": 3.0,
+            "efectivo": 42.0,
+            "com": "Programación del Backend (Flask) y Frontend inicial (HTML/JS)."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "fase": "Compilación",
+            "inicio": "15:51",
+            "fin": "16:00",
+            "muerto": 2.0,
+            "efectivo": 7.0,
+            "com": "Instalación de librerías (flask, flask-cors) y levantar el servidor local."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "fase": "Pruebas",
+            "inicio": "16:02",
+            "fin": "16:15",
+            "muerto": 2.0,
+            "efectivo": 11.0,
+            "com": "Pruebas finales de la nueva función de devolución y validaciones."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "fase": "Post Mortem",
+            "inicio": "16:15",
+            "fin": "16:50",
+            "muerto": 2.0,
+            "efectivo": 33.0,
+            "com": "Recopilación de datos, toma de capturas y redacción del documento PDF final."
+        }
+    ],
+    "d": [
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "id": 1,
+            "tipo": "10 Omission",
+            "fase": "Diseño",
+            "removido": "Pruebas",
+            "inicio": "15:30",
+            "fin": "15:45",
+            "efectivo": 15,
+            "com": "Se omitió la función de devolver y la validación de IDs negativos."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "id": 2,
+            "tipo": "100 Entorno",
+            "fase": "Compilación",
+            "removido": "Compilación",
+            "inicio": "15:20",
+            "fin": "15:25",
+            "efectivo": 5,
+            "com": "Faltaba importar CORS en Flask, el navegador bloqueaba las peticiones."
+        },
+        {
+            "fecha": "03/03/2026",
+            "mes": "03",
+            "id": 3,
+            "tipo": "30 Transcription",
+            "fase": "Codificación",
+            "removido": "Revisión de Código",
+            "inicio": "16:00",
+            "fin": "16:05",
+            "efectivo": 5,
+            "com": "Escribí \"id_libros\" en lugar de \"id_libro\" en el JavaScript."
+        }
+    ],
+    "e": [],
+    "p1": [
+        "10",
+        "25",
+        "5",
+        "60",
+        "5",
+        "15",
+        "10",
+        "30"
+    ],
+    "p2": [
+        "0",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+    ],
+    "p3": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+    ]
+}
