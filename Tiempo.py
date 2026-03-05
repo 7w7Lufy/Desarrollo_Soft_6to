@@ -95,7 +95,7 @@ class AppPSP(ctk.CTk):
         print(f"Datos guardados en: {ruta_archivo}")
 
     def cargar_datos(self):
-        nombre_base = self.entry_proyecto.get()
+        nombre_base = self.entry_proyecto.get() or "proyecto"
         ruta_archivo = os.path.join(self.directorio_base, f"{nombre_base}.json")
         
         if os.path.exists(ruta_archivo):
@@ -119,7 +119,7 @@ class AppPSP(ctk.CTk):
             self.renderizar_logs()
             self.txt_display.insert("0.0", f"SISTEMA: Proyecto '{nombre_base}' cargado desde la carpeta local.\n")
         else:
-            self.txt_display.insert("0.0", f"SISTEMA: No se encontró el archivo en {self.directorio_base}\n")
+            self.txt_display.insert("0.0", f"ERROR: No se encontró '{nombre_base}.json' en: {self.directorio_base}\n")
 
     # --- RESTO DE FUNCIONES (Mantenidas de versiones anteriores) ---
     def setup_ui_entradas(self):
@@ -149,7 +149,7 @@ class AppPSP(ctk.CTk):
         # Panel Errores Finales
         self.frame_ui_e = ctk.CTkFrame(self.input_container, fg_color="transparent")
         ctk.CTkLabel(self.frame_ui_e, text="N° Errores:").grid(row=0, column=0, padx=10, pady=10)
-        self.ent_num_err = ctk.CTkEntry(self.frame_ui_e, width=80, placeholder_text="0").grid(row=0, column=1, padx=5)
+        self.ent_num_err = ctk.CTkEntry(self.frame_ui_e, width=80, placeholder_text="0"); self.ent_num_err.grid(row=0, column=1, padx=5)
         self.combo_fase_e = ctk.CTkComboBox(self.frame_ui_e, values=self.fases_psp, state="readonly", width=200); self.combo_fase_e.set("Pruebas"); self.combo_fase_e.grid(row=0, column=3, padx=5)
         ctk.CTkButton(self.frame_ui_e, text="Registrar Error Final", fg_color="#C0392B", command=self.registrar_error_final).grid(row=0, column=4, padx=15)
 
@@ -222,9 +222,15 @@ class AppPSP(ctk.CTk):
                 lista[i][1].configure(text=str(r_val)); lista[i][2].configure(text=str(m_val))
                 lista[i][3].configure(text=f"{(m_val/p_val*100 if p_val > 0 else 0):.1f}%")
 
-        for lista in [self.celdas_t1, self.celdas_t2, self.celdas_t3]:
+        # Actualizar fila TOTAL con valores acumulados
+        for lista, dict_r, dict_m in [(self.celdas_t1, t_r1, t_m1), (self.celdas_t2, t_r2, t_m2), (self.celdas_t3, t_r3, t_m3)]:
+            s_r = sum(dict_r.values())
+            s_m = sum(dict_m.values())
             s_p = sum([float(lista[k][0].get() or 0) for k in range(8)])
             lista[8][0].configure(text=str(s_p))
+            lista[8][1].configure(text=str(s_r))
+            lista[8][2].configure(text=str(s_m))
+            lista[8][3].configure(text=f"{(s_m/s_p*100 if s_p > 0 else 0):.1f}%")
 
     def crear_tabla_estandar(self, tab, celdas, headers):
         f = ctk.CTkFrame(tab); f.pack(padx=10, pady=10, fill="both", expand=True)

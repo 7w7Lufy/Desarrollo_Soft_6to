@@ -59,6 +59,16 @@
             "muerto": 2.0,
             "efectivo": 33.0,
             "com": "Recopilación de datos, toma de capturas y redacción del documento PDF final."
+        },
+        {
+            "fecha": "04/03/2026",
+            "mes": "03",
+            "fase": "Codificación",
+            "inicio": "15:40",
+            "fin": "18:20",
+            "muerto": 5.0,
+            "efectivo": 155.0,
+            "com": "Complementos en front y back"
         }
     ],
     "d": [
@@ -111,14 +121,14 @@
         "30"
     ],
     "p2": [
-        "0",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
     ],
     "p3": [
         "0",
